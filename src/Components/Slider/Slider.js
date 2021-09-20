@@ -11,22 +11,38 @@ export default function Slider() {
     })
 
     const nextSlide = () => {
-        if(slideAnimation.index !== dataSlider.length) {
+        if(slideAnimation.index !== dataSlider.length && !slideAnimation.inProgress) {
             setSlideAnimation({index: slideAnimation.index + 1,
             inProgress: true})
+
+            setTimeout(() => {
+                setSlideAnimation({index: slideAnimation.index +1, inProgress: false})
+            }, 500)
         }
-        else if(slideAnimation.index === dataSlider.length) {
+        else if(slideAnimation.index === dataSlider.length && !slideAnimation.inProgress) {
             setSlideAnimation({index: 1, inProgress: true})
+
+            setTimeout(() => {
+                setSlideAnimation({index: 1, inProgress: false})
+            }, 500)
         }
     }
 
     const prevSlide = () => {
-        if(slideAnimation.index !== 1) {
+        if(slideAnimation.index !== 1 && !slideAnimation.inProgress) {
             setSlideAnimation({index: slideAnimation.index - 1,
             inProgress: true})
+
+            setTimeout(() => {
+                setSlideAnimation({index: slideAnimation.index -1, inProgress: false})
+            }, 500)
         }
-        else if(slideAnimation.index === 1) {
+        else if(slideAnimation.index === 1 && !slideAnimation.inProgress) {
             setSlideAnimation({index: dataSlider.length, inProgress: true})
+
+            setTimeout(() => {
+                setSlideAnimation({index: dataSlider.length, inProgress: false})
+            }, 500)
         }
     }
 
